@@ -26,7 +26,7 @@ function runPart2() {
 
 function runPart3() {
   const numb = ~~prompt(
-    "Enter an integer greater than 2 \n(Only the integer part will be used for float numbers число:"
+    "Enter an integer greater than 2 \n(Only the integer part will be used for float numbers)"
   );
 
   if (numb && numb > 2) {
@@ -37,7 +37,9 @@ function runPart3() {
       alert(`${numb} can not be reduced to 3 to some power`);
     }
   } else {
-    alert("Wrong input!");
+    alert(
+      "Wrong input! \nOnly numbers starting with 3 can be represented as a power of 3"
+    );
   }
 
   function isPowerOfThree(numb) {
