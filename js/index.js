@@ -25,11 +25,13 @@ function runPart2() {
 }
 
 function runPart3() {
-  const numb = ~~prompt(
-    "Enter an integer greater than 2 \n(Only the integer part will be used for float numbers)"
-  );
+  const input = prompt("Enter a number");
 
-  if (numb && numb > 2) {
+  if (!validateInput(input)) {
+    return;
+  }
+  const numb = +input;
+  if (numb >= 0) {
     const respObj = isPowerOfThree(numb);
     if (respObj.isPower) {
       alert(`${numb} can be reduced to 3 to ${respObj.power} power`);
@@ -38,16 +40,18 @@ function runPart3() {
     }
   } else {
     alert(
-      "Wrong input! \nOnly numbers starting with 3 can be represented as a power of 3"
+      "Wrong input! \nOnly numbers starting from 0 can be represented as a power of 3"
     );
   }
 
   function isPowerOfThree(numb) {
-    let respObj = {
+    const respObj = {
       isPower: false,
     };
 
     if (numb === 0) {
+      respObj.isPower = true;
+      respObj.power = 0;
       return respObj;
     }
 
@@ -63,4 +67,15 @@ function runPart3() {
     respObj.power = counter;
     return respObj;
   }
+}
+
+function validateInput(input) {
+  if (input === null) {
+    alert("As you wish");
+  } else if (!input.trim() || isNaN(input)) {
+    alert("Invalid number");
+  } else {
+    return true;
+  }
+  return false;
 }
